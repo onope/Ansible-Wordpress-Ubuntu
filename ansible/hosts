@@ -1,0 +1,5 @@
+[wordpress]
+000.000.000.000 # Need to edit
+
+[vagrant]
+192.168.33.100

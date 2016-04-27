@@ -1,0 +1,22 @@
+---
+- name: WordPress Download
+  become: yes
+  become_method: sudo
+  command: "sudo wget https://ja.wordpress.org/wordpress-4.4.2-ja.tar.gz"
+
+- name: Thawing　wordpress
+  become: yes
+  become_method: sudo
+  command: "sudo tar xvfz wordpress-4.4.2-ja.tar.gz"
+
+- name: Configure wordpress
+  become: yes
+  become_method: sudo
+  template:
+    src: wp.conf.j2
+    dest: "/home/vagrant/wordpress/wp-config.php"
+
+- name: Copy wordpress to the Document Root
+  become: yes
+  become_method: sudo
+  command: "sudo rsync -avP /home/vagrant/wordpress /var/www/"

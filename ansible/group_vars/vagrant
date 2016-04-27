@@ -1,0 +1,12 @@
+---
+wordpress:
+  application: hello_world
+
+mysql:
+  root_password: 123456789
+  wp_username: wp
+  wp_password: 123456789
+  wp_database: wp-db
+
+nginx:
+  server_name: www.hello_world.com

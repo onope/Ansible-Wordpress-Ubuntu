@@ -1,0 +1,25 @@
+---
+- name: Install php and php package
+  become: yes
+  become_method: sudo
+  apt: name={{ item }} state=installed
+  with_items:
+    - php5
+    - php5-fpm
+    - php5-mysql
+    - php5-gd
+    - libssh2-php
+
+- name: Remove php.ini
+  become: yes
+  become_method: sudo
+  command: "rm /etc/php5/fpm/php.ini"
+
+- name: Modify php.ini
+  become: yes
+  become_method: sudo
+  template:
+    src: php.ini.j2
+    dest: "/etc/php5/fpm/php.ini"
+  notify:
+    - restart php5-fpm
