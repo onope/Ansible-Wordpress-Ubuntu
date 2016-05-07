@@ -1,6 +1,7 @@
 ---
 wordpress:
   application: hello_world
+  os_user_name: name
 
 mysql:
   root_password: 123456789
