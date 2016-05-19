@@ -16,7 +16,17 @@
     src: wp.conf.j2
     dest: "/home/{{ wordpress.os_user_name }}/wordpress/wp-config.php"
 
+- name: Make www Directory
+  become: yes
+  become_method: sudo
+  command: "sudo mkdir /var/www/"
+
+- name: Make Application Directory
+  become: yes
+  become_method: sudo
+  command: "sudo mkdir /var/www/{{ wordpress.application }}/"
+
 - name: Copy wordpress to the Document Root
   become: yes
   become_method: sudo
-  command: "sudo rsync -avP /home/{{ wordpress.os_user_name }}/wordpress /var/www/"
+  command: "sudo rsync -avP /home/{{ wordpress.os_user_name }}/wordpress /var/www/{{ wordpress.application }}/"

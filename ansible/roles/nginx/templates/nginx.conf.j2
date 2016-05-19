@@ -2,7 +2,7 @@ server {
         listen 80 default_server;
         listen [::]:80 default_server ipv6only=on;
 
-        root /var/www/{{ wordpress.application }};
+        root /var/www/{{ wordpress.application }}/wordpress/;
         index index.php index.html index.htm;
 
         server_name {{ nginx.server_name }};
